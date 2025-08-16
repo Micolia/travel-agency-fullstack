@@ -1,0 +1,38 @@
+.notfoundblock {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100vh;
+    background-image: url('../../assets/img/easter-island.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
+  .home-button {
+    padding: 0.75rem 2rem;
+    margin: 15px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: color 0.3s, transform 0.2s;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .home-button:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    color: #ffe600;
+    transform: translateY(-2px) scale(1.04);
+    text-decoration: none;
+  }

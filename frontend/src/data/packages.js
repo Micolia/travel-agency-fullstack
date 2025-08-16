@@ -1,0 +1,101 @@
+export const packages = [
+  {
+    id: 1,
+    title: 'Roma Clásica',
+    description: 'Explora la ciudad eterna con un tour de 3 días visitando el Coliseo, el Vaticano y la Fontana di Trevi',
+    destination: 'Roma, Italia',
+    price: 299,
+    duration: '3 días',
+    maxParticipants: 15,
+    image: '/src/assets/img/cathedral.jpg',
+    rating: 4.8,
+    category: 'cultural',
+    startDate: '2025-09-15',
+    endDate: '2025-09-18',
+    services: ['Hotel 4 estrellas', 'Guía turística', 'Desayuno incluido', 'Transporte'],
+    itinerary: [
+      { day: 1, title: 'Llegada y Coliseo', activities: 'Llegada, check-in hotel, visita al Coliseo y Foro Romano' },
+      { day: 2, title: 'Vaticano', activities: 'Museos Vaticanos, Capilla Sixtina, Basílica de San Pedro' },
+      { day: 3, title: 'Roma Centro', activities: 'Fontana di Trevi, Panteón, Plaza España, salida' }
+    ],
+    highlights: ['Coliseo Romano', 'Museos Vaticanos', 'Fontana di Trevi', 'Guía experta'],
+    included: ['Alojamiento', 'Desayuno', 'Guía', 'Entradas'],
+    notIncluded: ['Vuelos', 'Almuerzo', 'Cena', 'Seguro de viaje']
+  },
+  {
+    id: 2,
+    title: 'Toscana y Vino',
+    description: 'Tour enogastronómico por las colinas toscanas con degustaciones de vino y visitas a bodegas históricas',
+    destination: 'Toscana, Italia',
+    price: 450,
+    duration: '5 días',
+    maxParticipants: 12,
+    image: '/src/assets/img/mountain.jpg',
+    rating: 4.9,
+    category: 'gastronomic',
+    startDate: '2025-10-01',
+    endDate: '2025-10-05',
+    services: ['Agriturismo típico', 'Degustaciones de vino', 'Tour de bodegas', 'Comidas tradicionales'],
+    itinerary: [
+      { day: 1, title: 'Llegada a Florencia', activities: 'Llegada, traslado al agriturismo, cena de bienvenida' },
+      { day: 2, title: 'Chianti Classico', activities: 'Tour por viñedos de Chianti, degustación en bodega histórica' },
+      { day: 3, title: 'San Gimignano', activities: 'Visita a San Gimignano, degustación de Vernaccia' },
+      { day: 4, title: 'Montalcino', activities: 'Brunello di Montalcino, almuerzo en viñedo' },
+      { day: 5, title: 'Despedida', activities: 'Última degustación, compras, salida' }
+    ],
+    highlights: ['Chianti Classico', 'San Gimignano medieval', 'Brunello di Montalcino', 'Agriturismo auténtico'],
+    included: ['Alojamiento rural', 'Todas las comidas', 'Degustaciones', 'Transporte'],
+    notIncluded: ['Vuelos', 'Bebidas extras', 'Compras personales']
+  },
+  {
+    id: 3,
+    title: 'Costa Amalfitana',
+    description: 'Relax y belleza en la costa más famosa de Italia con vistas espectaculares y pueblos pintorescos',
+    destination: 'Amalfi, Italia',
+    price: 599,
+    duration: '7 días',
+    maxParticipants: 20,
+    image: '/src/assets/img/glacier.jpg',
+    rating: 4.7,
+    category: 'beach',
+    startDate: '2025-08-20',
+    endDate: '2025-08-27',
+    services: ['Hotel vista al mar', 'Excursiones en barco', 'Cenas típicas', 'Traslados'],
+    itinerary: [
+      { day: 1, title: 'Llegada a Nápoles', activities: 'Llegada, traslado a Amalfi, check-in hotel' },
+      { day: 2, title: 'Positano', activities: 'Excursión a Positano, tiempo libre en la playa' },
+      { day: 3, title: 'Capri', activities: 'Excursión en barco a Capri, Grotta Azzurra' },
+      { day: 4, title: 'Ravello', activities: 'Visita a Ravello, jardines de Villa Rufolo' },
+      { day: 5, title: 'Amalfi Centro', activities: 'Catedral de Amalfi, fabricas de limoncello' },
+      { day: 6, title: 'Relax', activities: 'Día libre en la playa, spa del hotel' },
+      { day: 7, title: 'Salida', activities: 'Desayuno, traslado al aeropuerto' }
+    ],
+    highlights: ['Positano romántico', 'Capri y Grotta Azzurra', 'Villa Rufolo', 'Limoncello artesanal'],
+    included: ['Hotel 4 estrellas', 'Media pensión', 'Excursiones', 'Barco a Capri'],
+    notIncluded: ['Vuelos', 'Almuerzo días libres', 'Actividades opcionales']
+  },
+  {
+    id: 4,
+    title: 'Venecia Romántica',
+    description: 'Descubre la ciudad de los canales con paseos en góndola y visitas a palacios históricos',
+    destination: 'Venecia, Italia',
+    price: 380,
+    duration: '4 días',
+    maxParticipants: 16,
+    image: '/src/assets/img/cathedral.jpg',
+    rating: 4.6,
+    category: 'romantic',
+    startDate: '2025-11-10',
+    endDate: '2025-11-13',
+    services: ['Hotel céntrico', 'Paseo en góndola', 'Visita Palacio Ducal', 'Guía local'],
+    itinerary: [
+      { day: 1, title: 'Llegada', activities: 'Llegada, check-in, Plaza San Marco' },
+      { day: 2, title: 'Palacio Ducal', activities: 'Palacio Ducal, Puente de los Suspiros, Rialto' },
+      { day: 3, title: 'Góndola', activities: 'Paseo en góndola, islas de Murano y Burano' },
+      { day: 4, title: 'Despedida', activities: 'Última visita, compras, salida' }
+    ],
+    highlights: ['Plaza San Marco', 'Paseo en góndola', 'Murano y Burano', 'Palacios históricos'],
+    included: ['Hotel 3 estrellas', 'Desayuno', 'Góndola', 'Entradas'],
+    notIncluded: ['Vuelos', 'Comidas principales', 'Compras']
+  }
+]

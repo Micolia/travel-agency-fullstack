@@ -1,0 +1,350 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+.hero-section {
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.8), rgba(0, 86, 179, 0.8)), 
+              url('/src/assets/img/easter-island.jpg') center/cover;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(182, 244, 251, 0.5)!important;
+  margin-top: 2rem;
+  background: linear-gradient(135deg, #022e5a, #0080ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  color: #2c3e50;
+}
+
+
+.featured-destinations, .testimonials, .cta-section {
+  padding: 80px 0;
+}
+
+.featured-destinations {
+  background-color: #f8f9fa;
+}
+
+.featured-destinations h2, .testimonials h2, .cta-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #2c3e50;
+}
+
+.featured-packages h2 {
+color:#2c3e50;
+}
+
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-top: 2rem;
+}
+
+.package-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.package-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.package-info {
+  padding: 25px;
+}
+
+.package-info h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.package-info p {
+  color: #6c757d;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.package-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.package-details span {
+  font-size: 0.9rem;
+  color: #495057;
+  background: #e9ecef;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.package-price {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.package-price h4 {
+  font-size: 2rem;
+  color: #007bff;
+  margin: 0;
+}
+
+.package-price p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.package-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-view, .btn-book {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-view {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-view:hover {
+  background: #5a6268;
+}
+
+.btn-book {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+}
+
+.btn-book:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  transform: translateY(-2px);
+}
+
+
+.testimonials {
+  background: white;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.testimonial-card .stars {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.testimonial-card p {
+  font-style: italic;
+  color: #495057;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.testimonial-author strong {
+  display: block;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.testimonial-author span {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* CTA */
+.cta-section {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  text-align: center;
+}
+
+.cta-section h2 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.btn-primary {
+  background: white;
+  color: #007bff;
+}
+
+.btn-primary:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .package-buttons {
+    flex-direction: column;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Bootstrap Search Bar Custom Styles */
+.search-bar-bootstrap {
+  margin: 30px auto;
+  max-width: 1200px !important;
+  width: 95% !important;
+  min-width: 320px;
+  box-sizing: border-box !important;
+}
+
+.search-bar-bootstrap .search-btn-custom {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 12px 40px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  margin-top: 15px;
+}
+
+.search-bar-bootstrap .search-btn-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  background: linear-gradient(135deg, #0056b3, #004085);
+}
+
+.search-bar-bootstrap .form-label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.search-bar-bootstrap .form-control,
+.search-bar-bootstrap .form-select {
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.search-bar-bootstrap .form-control:focus,
+.search-bar-bootstrap .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .search-bar-bootstrap {
+    width: 95% !important;
+    max-width: none !important;
+  }
+  
+  .search-bar-bootstrap .search-btn-custom {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
