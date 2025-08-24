@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import './packagesList.css'
-import API_URL from '../../config'
+import { API_BASE_URL } from '../../config'
 
 const PackagesList = () => {
   const [packages, setPackages] = useState([])
@@ -35,7 +35,7 @@ const PackagesList = () => {
     const fetchPackages = async () => {
       try {
         setLoading(true)
-        const response = await fetch(`${API_URL}/packages`)
+        const response = await fetch(`${API_BASE_URL}/packages`)
 
         if (response.ok) {
           const data = await response.json()
