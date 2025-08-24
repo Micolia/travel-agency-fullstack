@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
 import './createPackage.css'
+import { API_BASE_URL } from '../../config.js'
 
 const CreatePackage = () => {
   const [formData, setFormData] = useState({
@@ -119,7 +120,7 @@ const CreatePackage = () => {
       console.log('Creazione pacchetto:', formData)
 
       // test api call
-      const response = await fetch('http://localhost:5000/api/packages', {
+      const response = await fetch(`${API_BASE_URL}/packages`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

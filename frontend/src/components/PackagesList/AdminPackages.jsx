@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/UserContext'
+import { API_BASE_URL } from '../../config'
 
 const AdminPackages = () => {
   const { token, isAdmin, isOrganizer } = useContext(UserContext)
@@ -20,7 +21,7 @@ const AdminPackages = () => {
   const fetchPackages = async () => {
     if (!token) return
     try {
-      const res = await fetch('http://localhost:5000/api/packages', {
+      const res = await fetch(`${API_BASE_URL}/packages`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       const data = await res.json()
@@ -41,7 +42,7 @@ const AdminPackages = () => {
   const handleCreate = async (e) => {
     e.preventDefault()
     try {
-      const res = await fetch('http://localhost:5000/api/packages', {
+      const res = await fetch(`${API_BASE_URL}/packages`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +86,7 @@ const AdminPackages = () => {
   const handleEdit = async (e) => {
     e.preventDefault()
     try {
-      const res = await fetch(`http://localhost:5000/api/packages/${editingId}`, {
+      const res = await fetch(`${API_BASE_URL}/packages/${editingId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -104,7 +105,7 @@ const AdminPackages = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('¿Eliminar paquete?')) return
     try {
-      const res = await fetch(`http://localhost:5000/api/packages/${id}`, {
+      const res = await fetch(`${API_BASE_URL}/packages/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -120,29 +121,29 @@ const AdminPackages = () => {
   return (
     <div>
       <h2>Gestión de Paquetes Turísticos</h2>
-      
+
       <form onSubmit={editingId ? handleEdit : handleCreate}>
-        <input name="title" placeholder="Título" value={form.title} onChange={handleChange} required />
-        <input name="destination" placeholder="Destino" value={form.destination} onChange={handleChange} required />
-        <input name="price" type="number" placeholder="Precio" value={form.price} onChange={handleChange} required />
-        <input name="duration_days" type="number" placeholder="Duración (días)" value={form.duration_days} onChange={handleChange} required />
-        <input name="max_participants" type="number" placeholder="Máx. participantes" value={form.max_participants} onChange={handleChange} required />
-        <select name="category" value={form.category} onChange={handleChange}>
-          <option value="cultural">Cultural</option>
-          <option value="gastronomic">Gastronómico</option>
-          <option value="beach">Playa</option>
-          <option value="romantic">Romántico</option>
-          <option value="adventure">Aventura</option>
-          <option value="nature">Naturaleza</option>
+        <input name='title' placeholder='Título' value={form.title} onChange={handleChange} required />
+        <input name='destination' placeholder='Destino' value={form.destination} onChange={handleChange} required />
+        <input name='price' type='number' placeholder='Precio' value={form.price} onChange={handleChange} required />
+        <input name='duration_days' type='number' placeholder='Duración (días)' value={form.duration_days} onChange={handleChange} required />
+        <input name='max_participants' type='number' placeholder='Máx. participantes' value={form.max_participants} onChange={handleChange} required />
+        <select name='category' value={form.category} onChange={handleChange}>
+          <option value='cultural'>Cultural</option>
+          <option value='gastronomic'>Gastronómico</option>
+          <option value='beach'>Playa</option>
+          <option value='romantic'>Romántico</option>
+          <option value='adventure'>Aventura</option>
+          <option value='nature'>Naturaleza</option>
         </select>
-        <input name="start_date" type="date" value={form.start_date} onChange={handleChange} />
-        <input name="end_date" type="date" value={form.end_date} onChange={handleChange} />
-        <textarea name="description" placeholder="Descripción" value={form.description} onChange={handleChange} required />
-        <button type="submit">{editingId ? 'Actualizar' : 'Crear'}</button>
-        {editingId && <button type="button" onClick={() => setEditingId(null)}>Cancelar</button>}
+        <input name='start_date' type='date' value={form.start_date} onChange={handleChange} />
+        <input name='end_date' type='date' value={form.end_date} onChange={handleChange} />
+        <textarea name='description' placeholder='Descripción' value={form.description} onChange={handleChange} required />
+        <button type='submit'>{editingId ? 'Actualizar' : 'Crear'}</button>
+        {editingId && <button type='button' onClick={() => setEditingId(null)}>Cancelar</button>}
       </form>
 
-      <table border="1" cellPadding="5" style={{ borderCollapse: 'collapse', width: '100%', marginTop: '20px' }}>
+      <table border='1' cellPadding='5' style={{ borderCollapse: 'collapse', width: '100%', marginTop: '20px' }}>
         <thead>
           <tr>
             <th>ID</th>

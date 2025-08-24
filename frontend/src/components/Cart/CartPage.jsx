@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext'
 import { UserContext } from '../../context/UserContext'
 import './cartPage.css'
+import { API_BASE_URL } from '../../config.js'
 
 const CartPage = () => {
   const {
@@ -31,7 +32,7 @@ const CartPage = () => {
 
     try {
       // Chiamata API per checkout
-      const response = await fetch('http://localhost:5000/api/bookings/checkout', {
+      const response = await fetch(`${API_BASE_URL}/bookings/checkout`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useCallback } from 'react'
 import { UserContext } from '../../context/UserContext'
 import './myTrips.css'
+import { API_BASE_URL } from '../../config'
 
 const MyTrips = () => {
   const [trips, setTrips] = useState([])
@@ -12,7 +13,7 @@ const MyTrips = () => {
   const fetchMyBookings = useCallback(async () => {
     try {
       setLoading(true)
-      const response = await fetch('http://localhost:5000/api/bookings/my-bookings', {
+      const response = await fetch(`${API_BASE_URL}/bookings/my-bookings`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -82,7 +83,7 @@ const MyTrips = () => {
 
   const handleCancelBooking = async (bookingId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/bookings/${bookingId}/cancel`, {
+      const response = await fetch(`${API_BASE_URL}/bookings/${bookingId}/cancel`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -218,7 +219,7 @@ const MyTrips = () => {
                               : trip.payment_status === 'pending'
                                 ? '⏳ Pendiente'
                                 : trip.payment_status === 'failed' ? '❌ Fallido' : trip.payment_status}
-                          </span>
+                                                    </span>
                         </div>
                       )}
                       {trip.transaction_id && (

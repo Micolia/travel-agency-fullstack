@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
 import './community.css'
+import { API_BASE_URL } from '../../config.js'
 
 const Community = () => {
   const [posts, setPosts] = useState([])
@@ -16,7 +17,7 @@ const Community = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/community')
+      const response = await fetch(`${API_BASE_URL}/community`)
       if (response.ok) {
         const data = await response.json()
         setPosts(data)
@@ -35,7 +36,7 @@ const Community = () => {
     if (!newPost.trim() || !token) return
 
     try {
-      const response = await fetch('http://localhost:5000/api/community', {
+      const response = await fetch(`${API_BASE_URL}/community`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +65,7 @@ const Community = () => {
     if (!token) return
 
     try {
-      const response = await fetch(`http://localhost:5000/api/community/${postId}/like`, {
+      const response = await fetch(`${API_BASE_URL}/community/${postId}/like`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`
@@ -151,42 +152,42 @@ const Community = () => {
               posts.map((post) => (
                 <div key={post.id} className='post-card'>
                   <div className='post-header'>
-                <div className='author-info'>
-                  <div className='author-avatar'>
-                    {post.user_name ? post.user_name.charAt(0).toUpperCase() : 'U'}
+                    <div className='author-info'>
+                      <div className='author-avatar'>
+                        {post.user_name ? post.user_name.charAt(0).toUpperCase() : 'U'}
+                      </div>
+                      <div className='author-details'>
+                        <h4>{post.user_name || 'Usuario'}</h4>
+                        <p className='post-meta'>
+                          {post.destination && `📍 ${post.destination} • `}
+                          {formatDate(post.created_at)}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className='author-details'>
-                    <h4>{post.user_name || 'Usuario'}</h4>
-                    <p className='post-meta'>
-                      {post.destination && `📍 ${post.destination} • `}
-                      {formatDate(post.created_at)}
-                    </p>
-                  </div>
-                </div>
-              </div>
 
                   <div className='post-content'>
-                <p>{post.content}</p>
-                {post.images && (
-                  <img src={post.images} alt='Post' className='post-image' />
-                )}
-              </div>
+                    <p>{post.content}</p>
+                    {post.images && (
+                      <img src={post.images} alt='Post' className='post-image' />
+                    )}
+                  </div>
 
                   <div className='post-actions'>
-                <button
-                  className='action-btn like-btn'
-                  onClick={() => handleLike(post.id)}
-                  disabled={!token}
-                >
-                  ❤️ {post.likes_count || 0}
-                </button>
-                <button className='action-btn comment-btn' disabled>
-                  💬 0
-                </button>
-                <button className='action-btn share-btn' disabled>
-                  🔄 Compartir
-                </button>
-              </div>
+                    <button
+                      className='action-btn like-btn'
+                      onClick={() => handleLike(post.id)}
+                      disabled={!token}
+                    >
+                      ❤️ {post.likes_count || 0}
+                    </button>
+                    <button className='action-btn comment-btn' disabled>
+                      💬 0
+                    </button>
+                    <button className='action-btn share-btn' disabled>
+                      🔄 Compartir
+                    </button>
+                  </div>
                 </div>
               ))
             )}

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
 import { CartContext } from '../../context/CartContext'
 import './packageDetail.css'
+import { API_BASE_URL } from '../../config'
 
 const PackageDetail = () => {
   const { id } = useParams()
@@ -21,7 +22,7 @@ const PackageDetail = () => {
         setLoading(true)
 
         // Prima prova a caricare dal backend
-        const response = await fetch(`http://localhost:5000/api/packages/${id}`)
+        const response = await fetch(`${API_BASE_URL}/packages/${id}`)
 
         if (response.ok) {
           const data = await response.json()
