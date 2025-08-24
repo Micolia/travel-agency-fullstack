@@ -1,0 +1,27 @@
+.profileblock {
+    margin: 0;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    height: 100vh;
+    color: white;
+    background-color: black;
+}
+
+.closesession {
+    padding: 7px 15px;
+    margin: 15px;
+    border-radius: 20px;
+    border: 2px solid rgb(255, 230, 0);
+    background-color: black;
+    background-color: rgb(255, 230, 0);
+    color: black;
+}
+
+.closesession:hover {
+    background-color: black;
+    color: rgb(255, 230, 0);
+}

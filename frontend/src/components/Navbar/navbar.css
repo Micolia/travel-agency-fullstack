@@ -1,0 +1,92 @@
+.navigazione {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.bttleft, .bttright {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.btnfill {
+    background: white;
+    color: #007bff;
+    border-color: white;
+}
+
+.btnfill:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btnempty {
+    background: transparent;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+    position: relative; /* Necessario per il posizionamento del badge */
+}
+
+.btnempty:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+/* mobile */
+@media (max-width: 768px) {
+    .navigazione {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .bttleft, .bttright {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    button {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+}
+
+/* cart notification */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 10;
+}
+
