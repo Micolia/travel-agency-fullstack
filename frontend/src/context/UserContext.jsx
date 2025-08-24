@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import { API_BASE_URL } from '../config'
 
 export const UserContext = createContext()
 
@@ -10,7 +11,7 @@ const UserProvider = ({ children }) => {
   const [usersList, setUsersList] = useState([]) // lista de usuarios (solo admin)
   const [packagesList, setPackagesList] = useState([]) // lista de paquetes (admin/organizer)
 
-  const baseUrl = 'http://localhost:5000/api'
+  const baseUrl = API_BASE_URL
 
   // --- Login ---
   const login = async (email, password) => {
@@ -90,33 +91,31 @@ const UserProvider = ({ children }) => {
   const isAdmin = () => userType === 'admin'
 
   // --- Funciones admin ---
-// --- Funciones admin ---
-const fetchUsers = async () => {
-  if (!token || !isAdmin()) return;
-  try {
-    const res = await fetch(`${baseUrl}/users`, { 
-      headers: { Authorization: `Bearer ${token}` } 
-    });
-    if (!res.ok) throw new Error('Error al obtener usuarios');
-    const data = await res.json();
+  // --- Funciones admin ---
+  const fetchUsers = async () => {
+    if (!token || !isAdmin()) return
+    try {
+      const res = await fetch(`${baseUrl}/users`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      if (!res.ok) throw new Error('Error al obtener usuarios')
+      const data = await res.json()
 
-    // Normalizar los datos del backend
-    const normalizedUsers = data.map(u => ({
-      id: u.id,
-      nombre: u.nombre || u.name || '',
-      apellido: u.apellido || '',
-      email: u.email,
-      user_type: u.user_type || 'traveler'
-    }));
+      // Normalizar los datos del backend
+      const normalizedUsers = data.map(u => ({
+        id: u.id,
+        nombre: u.nombre || u.name || '',
+        apellido: u.apellido || '',
+        email: u.email,
+        user_type: u.user_type || 'traveler'
+      }))
 
-    setUsersList(normalizedUsers); // solo una vez
-    console.log('Usuarios cargados:', normalizedUsers);
-  } catch (error) {
-    console.error('Error al listar usuarios:', error.message);
+      setUsersList(normalizedUsers) // solo una vez
+      console.log('Usuarios cargados:', normalizedUsers)
+    } catch (error) {
+      console.error('Error al listar usuarios:', error.message)
+    }
   }
-};
-
-
 
   const deleteUserById = async (id) => {
     if (!token || !isAdmin()) return
@@ -130,51 +129,50 @@ const fetchUsers = async () => {
     }
   }
 
-const updateUserById = async (id, data) => {
-  if (!token || !isAdmin()) return;
+  const updateUserById = async (id, data) => {
+    if (!token || !isAdmin()) return
 
-  try {
+    try {
     // Construimos payload solo con campos válidos y obligatorios
-    const payload = {
-      email: data.email, // email siempre obligatorio
-      name: [data.nombre, data.apellido].filter(Boolean).join(' ').trim() || data.name || '',
-      user_type: data.user_type || 'traveler',
-      phone: data.phone || null,
-      date_of_birth: data.date_of_birth || null,
-      profile_image: data.profile_image || null,
-      is_active: data.is_active ?? true
-    };
+      const payload = {
+        email: data.email, // email siempre obligatorio
+        name: [data.nombre, data.apellido].filter(Boolean).join(' ').trim() || data.name || '',
+        user_type: data.user_type || 'traveler',
+        phone: data.phone || null,
+        date_of_birth: data.date_of_birth || null,
+        profile_image: data.profile_image || null,
+        is_active: data.is_active ?? true
+      }
 
-    const res = await fetch(`${baseUrl}/users/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      body: JSON.stringify(payload)
-    });
+      const res = await fetch(`${baseUrl}/users/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify(payload)
+      })
 
-    if (!res.ok) {
-      const errData = await res.json();
-      throw new Error(errData.message || 'Error al actualizar usuario');
+      if (!res.ok) {
+        const errData = await res.json()
+        throw new Error(errData.message || 'Error al actualizar usuario')
+      }
+
+      const updatedUser = await res.json()
+
+      // Actualizamos localmente
+      setUsersList(usersList.map(u => (u.id === id
+        ? {
+            id,
+            nombre: data.nombre || '',
+            apellido: data.apellido || '',
+            email: data.email,
+            user_type: data.user_type || 'traveler'
+          }
+        : u)))
+
+      console.log(`Usuario ${id} actualizado`, updatedUser.user)
+    } catch (error) {
+      console.error('Error al actualizar usuario:', error.message)
     }
-
-    const updatedUser = await res.json();
-
-    // Actualizamos localmente
-    setUsersList(usersList.map(u => (u.id === id ? {
-      id,
-      nombre: data.nombre || '',
-      apellido: data.apellido || '',
-      email: data.email,
-      user_type: data.user_type || 'traveler'
-    } : u)));
-
-    console.log(`Usuario ${id} actualizado`, updatedUser.user);
-  } catch (error) {
-    console.error('Error al actualizar usuario:', error.message);
   }
-};
-
-
-
 
   // --- Funciones paquetes (admin/organizer) ---
   const fetchPackages = async () => {
@@ -267,7 +265,8 @@ const updateUserById = async (id, data) => {
       updatePackage,
       deletePackage,
       setTestOrganizer
-    }}>
+    }}
+    >
       {children}
     </UserContext.Provider>
   )

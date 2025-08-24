@@ -6,11 +6,11 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
   const { token, isAdmin } = useContext(UserContext)
 
   if (!token) {
-    return <Navigate to="/login" />
+    return <Navigate to='/login' />
   }
 
   if (adminOnly && !isAdmin()) {
-    return <Navigate to="/" />
+    return <Navigate to='/' />
   }
 
   return children

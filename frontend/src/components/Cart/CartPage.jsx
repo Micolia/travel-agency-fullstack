@@ -46,7 +46,6 @@ const CartPage = () => {
       const data = await response.json()
 
       if (response.ok && data.success) {
-        // Checkout riuscito
         alert(`🎉 ¡Reserva completada! 
         
 ${data.booking_count} reservas creadas
@@ -54,10 +53,9 @@ Total: €${data.total_amount}
 
 Serás redirigido a tus reservas.`)
 
-        clearCart() // Svuota il carrello
-        navigate('/my-trips') // Vai alle prenotazioni
+        clearCart()
+        navigate('/my-trips')
       } else {
-        // Errore nel checkout
         alert(`❌ Error en el checkout: ${data.message || 'Error desconocido'}`)
       }
     } catch (error) {

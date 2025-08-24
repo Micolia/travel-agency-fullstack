@@ -64,6 +64,8 @@ Total: €${data.total_amount}`)
     }
   }
 
+  // formatta data da numero a testo --> 2025.08.25 a 25 ago 2025
+
   const formatDate = (dateStr) => {
     return new Date(dateStr).toLocaleDateString('es-ES', {
       day: '2-digit',
